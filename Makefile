@@ -1,4 +1,5 @@
 CFLAGS=-Wall -Werror -Wextra
+LFLAGS=-lstdc++
 APP=test
 
 ifeq ($(DEBUG),y)
@@ -8,10 +9,10 @@ endif
 OBJS=test.o
 
 %.o: %.cpp
-	g++ $(CFLAGS) -c $<
+	gcc $(CFLAGS) -c $<
 
 $(APP): $(OBJS)
-	g++ -o $@ $^
+	gcc -o $@ $^ $(LFLAGS)
 
 clean:
 	rm -rf *.o
